@@ -1,5 +1,5 @@
 ![](https://github.com/vegasbrianc/prometheus/workflows/prometheus%20test/badge.svg)
-
+![Website](https://img.shields.io/website?down_color=red&down_message=offline&style=flat-square&up_color=blue&up_message=online&url=open.montd.io)
 # Contents
 
 - Introduction
@@ -18,17 +18,46 @@
   	- [Mac Users](#mac-users)
   - [Interesting Projects that use this Repo](#interesting-projects-that-use-this-repo)
 
-# A Prometheus & Grafana docker-compose stack
 
-Here's a quick start using Play-With-Docker (PWD) to start-up a [Prometheus](http://prometheus.io/) stack containing Prometheus, Grafana and Node scraper to monitor your Docker infrastructure. The Try in PWD below allows you to quickly deploy the entire Prometheus stack with a click of the button. This will allow you to quickly test the stack to see if it meets your needs.
+# A Observability & Monitoring Stack
 
-[![Try in PWD](https://github.com/play-with-docker/stacks/raw/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/vegasbrianc/prometheus/master/pwd-stack.yml)
+### Observability Stack :rocket:
+
+A container based observability platform that can run in any Virtual Machine, Public Cloud as Microsoft Azure or Oracle Cloud and even Raspberry Pi (testing)
+Creates a complete setup for Grafana, Alerta & Prometheus (Loki in the roadmap).
+
+Montd.io project aims to be an open easy-to-use platform build with [Docker](https://docker.io) to observability (metrics, monitoring, and alerting), cloud management tools and dataops toolkit.
+
+We provide container infrastructure for observability, with core and extended customizations using [Grafana](https://grafana.com/) to create and share custom analytical dashboards, [Prometheus](https://prometheus.io/) for metrics storage and [Alerta](https://alerta.io) for alerting dashboards.
+
+You can deploy any montd.io stack by running only one docker-compose command on your shell for each stack (observability, CloudOps or DataOps)
+The Docker Compose YAML file(docker-compose.yml) defines all the configurations, containers and components, making montd.io really easy to set up and start running.
+
+Start [using it today](#usage).
 
 # Pre-requisites
-Before we get started installing the Prometheus stack. Ensure you install the latest version of docker and [docker swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/) on your Docker host machine. Docker Swarm is installed automatically when using Docker for Mac or Docker for Windows.
+Before we get started installing the Montd.io Observability stack. Ensure you install the latest version of [docker](https://docker.io) and [docker-compose](https://docs.docker.com/compose/install/)[docker swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/) on your Docker host machine. Docker Compose & Swarm is installed automatically when using Docker for Mac or Docker for Windows.
+
+## Before you run :running:
+
+* PREPARE TO USE DOCKER CONTAINERS
+* Make sure you have Docker Compose in your enviroment (Swarm and Kubernetes on the way)* 
+* Change the default ports on the 'docker-compose.yml' file.
+
+
+
+
+```
+# QUICK START - EXAMPLE
+$ git clone https://github.com/montdata/observability
+$ cd observability-stack/
+$ docker-compose up -d .
+
+```
+
 
 # Installation & Configuration
-Clone the project locally to your Docker host.
+Clone the project to your host using git
 
 If you would like to change which targets should be monitored or make configuration changes edit the [/prometheus/prometheus.yml](prometheus/prometheus.yml) file. The targets section is where you define what should be monitored by Prometheus. The names defined in this file are actually sourced from the service name in the docker-compose file. If you wish to change names of the services you can add the "container_name" parameter in the `docker-compose.yml` file.
 
