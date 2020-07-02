@@ -1,0 +1,56 @@
+version: '3.1'
+
+services:
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./config:/prometheus
+      - ./data/prometheus:/data
+    command:
+      - '--config.file=/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/data'
+    ports:
+      - 9090:9090
+    restart: always
+    networks:
+      - promnet
+
+  node:
+    image: prom/node-exporter
+    ports:
+      - 9100:9100
+    restart: always
+    networks:
+      - promnet
+
+  alertmanager:
+    image: prom/alertmanager
+    volumes:
+      - ./config:/prometheus
+      - ./data/alertmanager:/data
+    command:
+      - '--config.file=/prometheus/alertmanager.yml'
+      - '--storage.path=/data'
+    ports:
+      - 9093:9093
+    networks:
+      - alerta_sharednet
+      - promnet
+
+  cadvisor:
+    image: google/cadvisor
+    ports:
+      - 9880:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - promnet
+      
+networks:
+  alerta_sharednet:
+    external: true
+  promnet:
+    driver: bridge
