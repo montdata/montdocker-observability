@@ -46,7 +46,6 @@ Before we get started installing the Montd.io Observability stack. Ensure you in
 
 
 
-
 ```
 # QUICK START - EXAMPLE
 $ git clone https://github.com/montdata/observability
@@ -54,54 +53,14 @@ $ cd observability-stack/
 $ docker-compose up -d .
 
 ```
+## Ports to play :eyes:
+
+** Observability
+* AlertaWeb IP on port `8080`
+* Grafana IP on port `3000`
+* Prometheus IP on port `9090`
 
 
-# Installation & Configuration
-Clone the project to your host using git
-
-If you would like to change which targets should be monitored or make configuration changes edit the [/prometheus/prometheus.yml](prometheus/prometheus.yml) file. The targets section is where you define what should be monitored by Prometheus. The names defined in this file are actually sourced from the service name in the docker-compose file. If you wish to change names of the services you can add the "container_name" parameter in the `docker-compose.yml` file.
-
-Once configurations are done let's start it up. From the /prometheus project directory run the following command:
-
-    $ HOSTNAME=$(hostname) docker stack deploy -c docker-stack.yml prom
-
-
-That's it the `docker stack deploy' command deploys the entire Grafana and Prometheus stack automagically to the Docker Swarm. By default cAdvisor and node-exporter are set to Global deployment which means they will propogate to every docker host attached to the Swarm.
-
-The Grafana Dashboard is now accessible via: `http://<Host IP Address>:3000` for example http://192.168.10.1:3000
-
-	username - admin
-	password - foobar (Password is stored in the `/grafana/config.monitoring` env file)
-
-In order to check the status of the newly created stack:
-
-    $ docker stack ps prom
-
-View running services:
-
-    $ docker service ls
-
-View logs for a specific service
-
-    $ docker service logs prom_<service_name>
-
-## Add Datasources and Dashboards
-Grafana version 5.0.0 has introduced the concept of provisioning. This allows us to automate the process of adding Datasources & Dashboards. The `/grafana/provisioning/` directory contains the `datasources` and `dashboards` directories. These directories contain YAML files which allow us to specify which datasource or dashboards should be installed. 
-
-If you would like to automate the installation of additional dashboards just copy the Dashboard `JSON` file to `/grafana/provisioning/dashboards` and it will be provisioned next time you stop and start Grafana.
-
-## Install Dashboards the old way
-
-I created a Dashboard template which is available on [Grafana Docker Dashboard](https://grafana.net/dashboards/179). Simply select Import from the Grafana menu -> Dashboards -> Import and provide the Dashboard ID [#179](https://grafana.net/dashboards/179)
-
-This dashboard is intended to help you get started with monitoring. If you have any changes you would like to see in the Dashboard let me know so I can update Grafana site as well.
-
-Here's the Dashboard Template
-
-![Grafana Dashboard](https://raw.githubusercontent.com/vegasbrianc/prometheus/master/images/Dashboard.png)
-
-Grafana Dashboard - `dashboards/Grana_Dashboad.json`
-Alerting Dashboard
 
 
 ## Alerting
@@ -110,25 +69,7 @@ Alerting has been added to the stack with Slack integration. 2 Alerts have been 
 Alerts              - `prometheus/alert.rules`
 Slack configuration - `alertmanager/config.yml`
 
-The Slack configuration requires to build a custom integration.
-* Open your slack team in your browser `https://<your-slack-team>.slack.com/apps`
-* Click build in the upper right corner
-* Choose Incoming Web Hooks link under Send Messages
-* Click on the "incoming webhook integration" link
-* Select which channel
-* Click on Add Incoming WebHooks integration
-* Copy the Webhook URL into the `alertmanager/config.yml` URL section
-* Fill in Slack username and channel
-
-View Prometheus alerts `http://<Host IP Address>:9090/alerts`
-View Alert Manager `http://<Host IP Address>:9093`
-
-### Test Alerts
-A quick test for your alerts is to stop a service. Stop the node_exporter container and you should notice shortly the alert arrive in Slack. Also check the alerts in both the Alert Manager and Prometheus Alerts just to understand how they flow through the system.
-
-High load test alert - `docker run --rm -it busybox sh -c "while true; do :; done"`
-
-Let this run for a few minutes and you will notice the load alert appear. Then Ctrl+C to stop this container.
+The Slack configuration requires to build a custom integration. #slack-integainer.
 
 ### Add Additional Datasources
 Now we need to create the Prometheus Datasource in order to connect Grafana to Prometheus 
@@ -145,18 +86,6 @@ This project is intended to be a quick-start to get up and running with Docker a
 
 Since this is a template to get started Prometheus and Alerting services are exposing their ports to allow for easy troubleshooting and understanding of how the stack works.
 
-## Deploy Prometheus stack with Traefik
-
-Same requirements as above. Swarm should be enabled and the Repo should be cloned to your Docker host.
-
-In the `docker-traefik-prometheus`directory run the following:
-
-    docker stack deploy -c docker-traefik-stack.yml traefik
-
-Verify all the services have been provisioned. The Replica count for each service should be 1/1 
-**Note this can take a couple minutes**
-
-    docker service ls
 
 ## Prometheus & Grafana now have hostnames
 
@@ -184,10 +113,6 @@ Grafana is an Open Source visualization tool for the metrics collected with Prom
 
 Username: admin
 Password: foobar
-
-Open the Traefik Dashboard and select the different backends available
-
-**Note: Upper right-hand corner of Grafana switch the default 1 hour time range down to 5 minutes. Refresh a couple times and you should see data start flowing**
 
 # Production Security:
 
