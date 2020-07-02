@@ -3,7 +3,7 @@
 # Contents
 
 - Introduction
-  - [Overview](#a-prometheus--grafana-docker-compose-stack)
+  - [Overview](#a-observability-and-monitoring-stack)
   - [Pre-requisites](#pre-requisites)
   - [Installation & Configuration](#installation--configuration)
     - [Add Datasources & Dashboards](#add-datasources-and-dashboards)
@@ -14,12 +14,9 @@
   - [Deploy Prometheus stack with Traefik](#deploy-prometheus-stack-with-traefik)
   - [Security Considerations](#security-considerations)
   	- [Production Security](#production-security)
-  - [Troubleshooting](#troubleshooting)
-  	- [Mac Users](#mac-users)
-  - [Interesting Projects that use this Repo](#interesting-projects-that-use-this-repo)
 
 
-# A Observability & Monitoring Stack
+# A Observability and Monitoring Stack
 
 ### Observability Stack :rocket:
 
@@ -45,7 +42,6 @@ Before we get started installing the Montd.io Observability stack. Ensure you in
 * Change the default ports on the 'docker-compose.yml' file.
 
 
-
 ```
 # QUICK START - EXAMPLE
 $ git clone https://github.com/montdata/observability
@@ -59,8 +55,6 @@ $ docker-compose up -d .
 * AlertaWeb IP on port `8080`
 * Grafana IP on port `3000`
 * Prometheus IP on port `9090`
-
-
 
 
 ## Alerting
@@ -112,7 +106,7 @@ Grafana is an Open Source visualization tool for the metrics collected with Prom
     http://grafana.localhost
 
 Username: admin
-Password: foobar
+Password: montd42
 
 # Production Security:
 
@@ -121,26 +115,3 @@ Here are just a couple security considerations for this stack to help you get st
 * Enable SSL for Grafana with a Proxy such as [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/) or [Traefik](https://traefik.io/) with Let's Encrypt
 * Add user authentication via a Reverse Proxy [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/) or [Traefik](https://traefik.io/) for services cAdvisor, Prometheus, & Alerting as they don't support user authenticaiton
 * Terminate all services/containers via HTTPS/SSL/TLS
-
-# Troubleshooting
-
-It appears some people have reported no data appearing in Grafana. If this is happening to you be sure to check the time range being queried within Grafana to ensure it is using Today's date with current time.
-
-## Mac Users
-
-1. The node-exporter does not run the same as Mac and Linux. Node-Exporter is not designed to run on Mac and in fact cannot collect metrics from the Mac OS due to the differences between Mac and Linux OS's. I recommend you comment out the node-exporter section in the `docker-compose.yml` file and instead just use the cAdvisor.
-
-2. If you find after you deploy your project that the prometheus and alertmanager services are in pending status due to "no suitable node" this is due to file system permissions. Be sure to Open Docker for Mac Preferences -> File Sharing Menu and add the following:
-
-![Docker for Mac File Sharing Settings](https://github.com/vegasbrianc/prometheus/raw/master/images/mac-filesystem.png)
-
-# Interesting Projects that use this Repo
-Several projects utilize this Prometheus stack. Here's the list of projects:
-
-* [Docker Pulls](https://github.com/vegasbrianc/docker-pulls) - Visualize Docker-Hub pull statistics with Prometheus
-* [GitHub Monitoring](https://github.com/vegasbrianc/github-monitoring) - Monitor your GitHub projects with Prometheus
-* [Traefik Reverse Proxy/Load Balancer Monitoring](https://github.com/vegasbrianc/docker-traefik-prometheus) - Monitor the popular Reverse Proxy/Load Balancer Traefik with Prometheus
-* [internet monitoring](https://github.com/maxandersen/internet-monitoring) - Monitor your local network, internet connection and speed with Prometheus.
-* [Dockerize Your Dev](https://github.com/RiFi2k/dockerize-your-dev) - Docker compose a VM to get LetsEncrypt / NGINX proxy auto provisioning, ELK logging, Prometheus / Grafana monitoring, Portainer GUI, and more...
-
-*Have an intersting Project which use this Repo? Submit yours to the list*
