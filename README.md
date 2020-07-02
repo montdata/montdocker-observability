@@ -1,8 +1,7 @@
-![](https://github.com/vegasbrianc/prometheus/workflows/prometheus%20test/badge.svg)
 ![Website](https://img.shields.io/website?down_color=red&down_message=offline&style=flat-square&up_color=blue&up_message=online&url=https://open.montd.io)
+
 # Contents
 
-- Introduction
   - [Overview](#a-observability-and-monitoring-stack)
   - [Pre-requisites](#pre-requisites)
   - [Installation & Configuration](#installation--configuration)
@@ -115,3 +114,24 @@ Here are just a couple security considerations for this stack to help you get st
 * Enable SSL for Grafana with a Proxy such as [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/) or [Traefik](https://traefik.io/) with Let's Encrypt
 * Add user authentication via a Reverse Proxy [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/) or [Traefik](https://traefik.io/) for services cAdvisor, Prometheus, & Alerting as they don't support user authenticaiton
 * Terminate all services/containers via HTTPS/SSL/TLS
+
+
+## Note:
+The code and scripts used in the project are written by [montdata.com](https://github.com/montdata) :+1:
+
+## Project philosophy
+
+The Montd.io project is intended to make it quick and easy for IT Professionals to start monitoring your infrastructure. 
+
+montd-io observability stack should meet the vast majority of users' needs out of the box for **VMs**, **O.S.**, **APP**, **DB** and **CLOUD** ***Monitoring***
+
+montd-io cloudops should help everyone that needs to manage costs, orchestrate or even have a webpage to start and stop **multi cloud** VMs. Based on https://mist.io/ with some additions and dashboards.
+
+montd-io dataops is a complete stack for storing relational and non relational DATA (with postgreSQL and ElasticSearch), and have a easy management tool (https://www.adminer.org/)
+
+## Contributing
+
+Interested in contributing to this project? We'd love your help. Montd-io is an open platform, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
+
+## Thanks and a disclaimer
+Thanks to @vegasbrianc work on making a super easy docker stack for running prometheus and grafana.
