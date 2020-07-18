@@ -1,1 +1,0 @@
-from alerta import app

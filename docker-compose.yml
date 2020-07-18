@@ -11,7 +11,7 @@ networks:
 services:
 
   prometheus:
-    image: prom/prometheus:v2.1.0
+    image: prom/prometheus
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -22,6 +22,8 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     ports:
       - 9090:9090
+    depends_on:
+      - cadvisor
     links:
       - alertmanager:alertmanager
     networks:
@@ -31,6 +33,22 @@ services:
 #      placement:
 #        constraints:
 #          - node.hostname == ${HOSTNAME}
+  cadvisor:
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 8088:8080
+    networks:
+      - back-tier
+    restart: always
+#    deploy:
+#      mode: global
+#      restart_policy:
+#        condition: on-failure
 
   node-exporter:
     image: prom/node-exporter
@@ -48,8 +66,8 @@ services:
     networks:
       - back-tier
     restart: always
-    deploy:
-      mode: global
+#    deploy:
+#      mode: global
 
   alertmanager:
     image: prom/alertmanager
