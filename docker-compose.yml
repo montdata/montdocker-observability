@@ -3,6 +3,7 @@ version: '3.7'
 volumes:
     prometheus_data: {}
     grafana_data: {}
+    promalert_data: {}
 
 networks:
   front-tier:
@@ -11,7 +12,7 @@ networks:
 services:
 
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.20.1
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -29,10 +30,7 @@ services:
     networks:
       - back-tier
     restart: always
-#    deploy:
-#      placement:
-#        constraints:
-#          - node.hostname == ${HOSTNAME}
+    
   cadvisor:
     image: google/cadvisor
     volumes:
@@ -45,10 +43,6 @@ services:
     networks:
       - back-tier
     restart: always
-#    deploy:
-#      mode: global
-#      restart_policy:
-#        condition: on-failure
 
   node-exporter:
     image: prom/node-exporter
@@ -66,8 +60,6 @@ services:
     networks:
       - back-tier
     restart: always
-#    deploy:
-#      mode: global
 
   alertmanager:
     image: prom/alertmanager
@@ -81,12 +73,9 @@ services:
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
-#    deploy:
-#      placement:
-#        constraints:
-#          - node.hostname == ${HOSTNAME}
+
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:7.1.4-ubuntu
     user: "472"
     depends_on:
       - prometheus
