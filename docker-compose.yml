@@ -12,7 +12,7 @@ networks:
 services:
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.22.0
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -32,7 +32,7 @@ services:
     restart: always
     
   cadvisor:
-    image: google/cadvisor
+    image: gcr.io/cadvisor/cadvisor:v0.37.0
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
