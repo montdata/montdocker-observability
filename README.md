@@ -31,7 +31,7 @@ The Docker Compose YAML file(docker-compose.yml) defines all the configurations,
 
 
 
-![observability1](https://github.com/montdata/observability/blob/master/images/obs1.PNG)
+![observability1](https://github.com/montdata/montd-observability/blob/master/images/obs1.PNG)
 
 
 
@@ -52,8 +52,8 @@ Before we get started installing the Montd.io Observability stack. Ensure you in
 
 ```
 # QUICK START - EXAMPLE
-$ git clone https://github.com/montdata/observability
-$ cd observability-stack/
+$ git clone https://github.com/montdata/montd-observability
+$ cd montd-observability/
 $ docker-compose up -d .
 
 ```
@@ -62,10 +62,9 @@ $ docker-compose up -d .
 
 ** Observability
 
-* AlertaWeb IP on port `8080`
-* Grafana IP on port `3000`
-* Prometheus IP on port `9090`
-
+* Grafana IP on port `42003`
+* Prometheus IP on port `42004`
+* AlertaWeb IP on port `42005`
 
 ## Alerting
 
