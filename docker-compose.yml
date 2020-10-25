@@ -136,3 +136,18 @@ services:
     networks:
       - back-tier
       - front-tier
+  loki:
+    image: grafana/loki:1.6.0
+    ports:
+      - "42002:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - back-tier 
+
+  promtail:
+    image: grafana/promtail:1.6.0
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - back-tier
