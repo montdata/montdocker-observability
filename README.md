@@ -31,7 +31,7 @@ The Docker Compose YAML file(docker-compose.yml) defines all the configurations,
 
 
 
-![observability1](https://github.com/montdata/montd-observability/blob/master/images/obs1.PNG)
+![observability1](https://github.com/montdata/montd-observability/blob/master/images/obs2.PNG)
 
 
 
