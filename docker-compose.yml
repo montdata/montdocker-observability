@@ -22,7 +22,7 @@ services:
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
     ports:
-      - 9090:9090
+      - 42004:9090
     depends_on:
       - cadvisor
     links:
@@ -39,13 +39,13 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
-      - 8088:8080
+      - 42088:8080
     networks:
       - back-tier
     restart: always
 
   node-exporter:
-    image: prom/node-exporter
+    image: prom/node-exporter:v1.0.1
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -56,13 +56,13 @@ services:
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
     ports:
-      - 9100:9100
+      - 42001:9100
     networks:
       - back-tier
     restart: always
 
   alertmanager:
-    image: prom/alertmanager
+    image: prom/alertmanager:v0.21.0
     ports:
       - 9093:9093
     volumes:
@@ -75,12 +75,12 @@ services:
       - '--storage.path=/alertmanager'
 
   grafana:
-    image: grafana/grafana:7.1.4-ubuntu
+    image: grafana/grafana:7.2.2-ubuntu
     user: "472"
     depends_on:
       - prometheus
     ports:
-      - 3000:3000
+      - 42003:3000
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
