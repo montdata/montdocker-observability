@@ -62,9 +62,14 @@ $ docker-compose up -d .
 
 ** Observability
 
+* Infra Agent on port `42001`
 * Grafana IP on port `42003`
 * Prometheus IP on port `42004`
 * AlertaWeb IP on port `42005`
+* AlertManager IP on port `42006`
+* GraphiteWeb IP on port `42008`
+* CAdvisor IP on port `42088`
+
 
 ## Alerting
 
@@ -102,14 +107,14 @@ Since this is a template to get started Prometheus and Alerting services are exp
 
 ## Check the Metrics
 
-Once all the services are up we can open the Traefik Dashboard. The dashboard should show us our frontend and backends configured for both Grafana and Prometheus.
+Once all the services are up we can open the Prometheus Targets Dashboard. The dashboard should show us our frontend and backends configured for both Grafana and Prometheus.
 
-    http://localhost:8080
+    http://localhost:42004/targetes
 
 
 Take a look at the metrics which Traefik is now producing in Prometheus metrics format
 
-    http://localhost:8080/metrics
+    http://localhost:42004/metrics
 
 
 ## Login to Grafana and Visualize Metrics
@@ -117,7 +122,7 @@ Take a look at the metrics which Traefik is now producing in Prometheus metrics 
 Grafana is an Open Source visualization tool for the metrics collected with Prometheus. Next, open Grafana to view the Traefik Dashboards.
 **Note: Firefox doesn't properly work with the below URLS please use Chrome**
 
-    http://grafana.localhost
+    http://localhost:42003
 
 Username: admin
 Password: montd42
