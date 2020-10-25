@@ -94,7 +94,7 @@ services:
   alerta:
     image: alerta/alerta-web:8.0.2
     ports:
-      - 9080:80
+      - 42005:8080
     depends_on:
       - db
     environment:
@@ -125,3 +125,14 @@ services:
     restart: always
     networks:
       - back-tier
+  graphite:
+    image: graphiteapp/graphite-statsd:1.1.7-6
+    ports:
+      - 42008:80
+      - 2003-2004
+      - 2023-2024
+      - 8125-8126
+    restart: always
+    networks:
+      - back-tier
+      - front-tier

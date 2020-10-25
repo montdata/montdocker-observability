@@ -67,4 +67,4 @@ scrape_configs:
   - job_name: alerta
     metrics_path: /api/management/metrics
     static_configs:
-    - targets: ['alerta:80']
+    - targets: ['alerta:8080']

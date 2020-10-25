@@ -22,9 +22,9 @@ route:
 receivers:
 - name: "alerta"
   webhook_configs:
-  - url: 'http://alerta/api/webhooks/prometheus'
+  - url: 'http://alerta:8080/api/webhooks/prometheus'
     send_resolved: true
-    http_config:
-      basic_auth: 
-        username: admin@alerta.io
-        password: alerta
+#    http_config:
+#      basic_auth: 
+#        username: admin@alerta.io
+#        password: alerta
