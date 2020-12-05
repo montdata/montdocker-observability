@@ -91,40 +91,40 @@ services:
       - front-tier
     restart: always
 
-  alerta:
-    image: alerta/alerta-web:8.0.2
-    ports:
-      - 42005:8080
-    depends_on:
-      - db
-    environment:
-      - AUTH_REQUIRED=${AUTH_REQUIRED:-False}
-      - ADMIN_USERS=${ADMIN_USERS:-not-set}
-      - CUSTOMER_VIEWS=${CUSTOMER_VIEWS:-False}
-      - PROVIDER=${PROVIDER:-basic}
-      - CLIENT_ID=${CLIENT_ID:-not-set}
-      - CLIENT_SECRET=${CLIENT_SECRET:-not-set}
-      - ALLOWED_EMAIL_DOMAIN=${ALLOWED_EMAIL_DOMAIN:-*}
-      - ALLOWED_GITHUB_ORGS=${ALLOWED_GITHUB_ORGS:-*}
-      - GITLAB_URL=${GITLAB_URL:-not-set}
-      - ALLOWED_GITLAB_GROUPS=${ALLOWED_GITLAB_GROUPS:-*}
-      - PLUGINS=${PLUGINS:-reject,prometheus}
-      - ALERTMANAGER_API_URL=http://alertmanager:9093
-      - ORIGIN_BLACKLIST=${ORIGIN_BLACKLIST:-not-set}
-      - ALLOWED_ENVIRONMENTS=${ALLOWED_ENVIRONMENTS:-Production,Development}
-      - MONGO_URI=mongodb://db:27017/monitoring
-    restart: always
-    networks:
-      - back-tier
-      - front-tier
-
-  db:
-    image: mongo:4.0.20-xenial
-    volumes:
-      - ./data/mongodb:/data/db
-    restart: always
-    networks:
-      - back-tier
+#  alerta:
+#    image: alerta/alerta-web:8.0.2
+#    ports:
+#      - 42005:8080
+#    depends_on:
+#      - db
+#    environment:
+#      - AUTH_REQUIRED=${AUTH_REQUIRED:-False}
+#      - ADMIN_USERS=${ADMIN_USERS:-not-set}
+#      - CUSTOMER_VIEWS=${CUSTOMER_VIEWS:-False}
+#      - PROVIDER=${PROVIDER:-basic}
+#      - CLIENT_ID=${CLIENT_ID:-not-set}
+#      - CLIENT_SECRET=${CLIENT_SECRET:-not-set}
+#      - ALLOWED_EMAIL_DOMAIN=${ALLOWED_EMAIL_DOMAIN:-*}
+#      - ALLOWED_GITHUB_ORGS=${ALLOWED_GITHUB_ORGS:-*}
+#      - GITLAB_URL=${GITLAB_URL:-not-set}
+#      - ALLOWED_GITLAB_GROUPS=${ALLOWED_GITLAB_GROUPS:-*}
+#      - PLUGINS=${PLUGINS:-reject,prometheus}
+#      - ALERTMANAGER_API_URL=http://alertmanager:9093
+#      - ORIGIN_BLACKLIST=${ORIGIN_BLACKLIST:-not-set}
+#      - ALLOWED_ENVIRONMENTS=${ALLOWED_ENVIRONMENTS:-Production,Development}
+#      - MONGO_URI=mongodb://db:27017/monitoring
+#    restart: always
+#    networks:
+#      - back-tier
+#      - front-tier
+#
+#  db:
+#    image: mongo:4.0.20-xenial
+#    volumes:
+#      - ./data/mongodb:/data/db
+#    restart: always
+#    networks:
+#      - back-tier
   graphite:
     image: graphiteapp/graphite-statsd:1.1.7-6
     ports:
