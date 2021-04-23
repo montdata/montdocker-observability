@@ -4,7 +4,7 @@ description: montd.io - Observability Stack for everyone
 author: Montdata Tecnologia Ltda
 github_org: montdata
 url: https://montd.io
-
+color_scheme: dark
 # documentation theme
 remote_theme: pmarsceill/just-the-docs
 search_enabled: true
