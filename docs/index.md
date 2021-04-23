@@ -5,21 +5,29 @@ title: Home
 nav_order: 1
 has_children: true
 ---
-# o12stack.org documentation
+# montd.io documentation
 
-We strive to build a free and open source observability solution 
-for Kubernetes with "smaller clusters, more of them" in mind.
-{: .fs-6 .fw-300}
 
-[Demos / Proof of concepts](https://github.com/observabilitystack/demo/blob/master/README.md){: .btn .btn-purple }
+
+Montd.io project aims to be an open easy-to-use platform build with [Docker](https://docker.io) to Observability (metrics, monitoring, and alerting), cloud operations tools and dataops toolkit.
+
+We provide container infrastructure for observability, with core and extended customizations using [Grafana](https://grafana.com/) to create and share custom analytical dashboards, [Prometheus](https://prometheus.io/) for metrics storage and [Alerta](https://alerta.io) for alerting dashboards. We strive to build a free and open source observability stacks, 
+for Docker, Cloud, Kubernetes or even Raspberry Pi.
+
+You can deploy montd.io stack by running only one docker-compose command on your shell for each stack (Cloud, Infrastructure, Database, Application or Web)
+The Docker Compose YAML file(docker-compose.yml) defines all the configurations, containers and components, making montd.io really easy to set up and start running
+
+Start [using it today](#usage).
+
+
+[Single / Demo Stack](https://github.com/montdata/montd-observability-demo){: .btn .btn-purple }
 [Quick start](docs/quickstart.html){: .btn }
-[View on GitHub](https://github.com/observabilitystack/k8s-stack){: .btn }
+[GitHub Repos](https://github.com/montdata){: .btn }
 
 * * *
 
-The _observabilitystack_ (o12stack) strives to combine the best-in-class 
-open source monitoring and observability tools in a pre-configured turn-key 
-solution. Using the Kubernetes package manager [Helm](https://helm.sh/) 
+The montd.io vision is to combine the best-in-class open source cloud native observability tools in a pre-configured turn-key solution. 
+Using the Kubernetes package manager [Helm](https://helm.sh/) 
 you can deploy the full stack in seconds. The stack is fully configurable 
 and extendble via _Helm_. Of course you can enable and disable tools for 
 a perfect fit to your infrastructure.
@@ -52,17 +60,6 @@ When contributing to this repository, please first discuss the change you wish t
 
 
 
-
-
-
-Montd.io project aims to be an open easy-to-use platform build with [Docker](https://docker.io) to Observability (metrics, monitoring, and alerting), cloud operations tools and dataops toolkit.
-
-We provide container infrastructure for observability, with core and extended customizations using [Grafana](https://grafana.com/) to create and share custom analytical dashboards, [Prometheus](https://prometheus.io/) for metrics storage and [Alerta](https://alerta.io) for alerting dashboards.
-
-You can deploy montd.io stack by running only one docker-compose command on your shell for each stack (Observability, CloudOps or DataOps)
-The Docker Compose YAML file(docker-compose.yml) defines all the configurations, containers and components, making montd.io really easy to set up and start running
-
-Start [using it today](#usage).
 
 
 # Observability Stack :rocket:
