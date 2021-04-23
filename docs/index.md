@@ -32,34 +32,12 @@ you can deploy the full stack in seconds. The stack is fully configurable
 and extendble via _Helm_. Of course you can enable and disable tools for 
 a perfect fit to your infrastructure.
 
-* * *
-
-Coming soon
-{: .label .label-yellow }
-
-_We're currently ramping up our efforts to provide a seamless experience.
-Stay tuned!_
-{: .text-grey-dk-000}
-
-## Tools to be included
-
-* __Filebeat__ (Logfile harvester)
-* __Logstash__ (Logfile enrichment and routing)
-* __Elasticsearch__ (Metric storage)
-* __Graylog__ (Logfile visualisation)
-* __Prometheus__ (Cluster and Pod metrics)
-* __Grafana__ (Metric visualisation)
-
 ## License
 
 The Observabilitystack configuration is distributed by an [MIT license](LICENSE).
 
 ## Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
-
-
-
-
 
 
 # Observability Stack :rocket:
@@ -89,23 +67,6 @@ We have three principal repositories:
 - CloudOps Management Stack with Mist.io
 - DataOps Stack, with PostgreSQL & Adminer
 
-
-## Before you run :running:
-
-* PREPARE TO USE DOCKER CONTAINERS
-* Make sure you have Docker Compose in your enviroment (Swarm and Kubernetes on the way)* 
-* Change the default ports on the 'docker-compose.yml' file.
-
-
-
-
-```
-# QUICK START - EXAMPLE
-$ git clone https://github.com/montdata/observability
-$ cd observability-stack/
-$ docker-compose up -d .
-
-```
 
 ## Note:
 The code and scripts used in the project are written by [montdata.com](https://github.com/montdata) :+1:
