@@ -1,1 +1,12 @@
-theme: jekyll-theme-minimal
+---
+title: montd.io
+description: montd.io - Observability Stack for everyone
+author: Montdata Tecnologia Ltda
+github_org: montdata
+url: https://montd.io
+
+# documentation theme
+remote_theme: pmarsceill/just-the-docs
+search_enabled: true
+plugins:
+  - jekyll-remote-theme
