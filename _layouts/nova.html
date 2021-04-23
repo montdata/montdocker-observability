@@ -37,16 +37,16 @@
 				<nav class="navbar navbar-expand-lg" >
                     <h1 class="site-logo">
 						<i class="fas fa-server"></i>
-						<span class="logo-text">observabilitystack.org</span>
+						<span class="logo-text">montd.io</span>
 					</h1>
 				</nav>
 				
 				<!-- // Free Version ONLY -->
 				<ul class="social-list list-inline mb-0 position-absolute">
 					<li class="list-inline-item active"><a class="text-nav" href="/">Home</a></li>
-					<li class="list-inline-item"><a class="text-nav" href="/docs/">Documentation</a></li>
-					<li class="list-inline-item social-start social"><a class="text-dark" href="https://github.com/{{ site.github_org }}"><i class="fab fa-github fa-fw"></i></a></li>
-					<li class="list-inline-item social"><a class="text-dark" href="https://hub.docker.com/u/{{ site.github_org }}"><i class="fab fa-docker fa-fw"></i></a></li>
+					<li class="list-inline-item"><a class="text-nav" href="/docs/">Docs</a></li>
+					<li class="list-inline-item social-start social"><a class="text-dark" href="https://github.com/montdata"><i class="fab fa-github fa-fw"></i></a></li>
+					<li class="list-inline-item social"><a class="text-dark" href="https://hub.docker.com/u/montdata"><i class="fab fa-docker fa-fw"></i></a></li>
 	            </ul><!--//social-list-->
             </div><!--//container-->
             
@@ -61,21 +61,20 @@
 		    <div class="row figure-holder">
 			    <div class="col-12 col-md-6 pt-3 pt-md-4">
 				    <h2 class="site-headline font-weight-bold mt-lg-5 pt-lg-5">
-						Log management for Kubernetes clusters.
+						Observability Stack for Everyone, Everywhere.
 					</h2>
 				    <div class="site-tagline mb-3">
-						Providing the building bricks for
-						a state of the art log management
-						and observability stack.
-						Highly configurable and templated,
-						perfect to manage 
-						<em>smaller clusters, more of them.</em>
+						Providing the building blocks for
+						a state of the art monitoring, logging
+						and metrics stack.
+						Highly tested and integrated with  
+						<em>Database, Web, Applications, Cloud and Infrastructure Observability Solutions.</em>
 					</div>
 					<div class="site-tagline font-weight-bold mb-3">
 						Free and open source.
 					</div>
 				    <div class="cta-btns">
-						<div class="mb-4"><a class="btn btn-primary font-weight-bold theme-btn" href="https://github.com/observabilitystack/demo">Take a look at the demos</a></div>
+						<div class="mb-4"><a class="btn btn-primary font-weight-bold theme-btn" href="https://github.com/montdata/observability-demo">Take a look at the demos</a></div>
 				    </div>
 			    </div>
 		    </div><!--//row-->
@@ -88,7 +87,8 @@
 			    <div class="footer-col col-6 col-lg-3">
 				    <h4 class="col-heading">Contributors</h4>
 				    <ul class="list-unstyled">
-						{% for c in site.github.contributors %}
+						{% for c in site.github.
+							 %}
 					    <li><a href="{{ c.html_url }}">{{ c.login }}</a></li>
 						{% endfor %}
 				    </ul>
@@ -96,9 +96,9 @@
 			    <div class="footer-col col-6 col-lg-3">
 				    <h4 class="col-heading">Resources</h4>
 				    <ul class="list-unstyled">
-						<li><a href="https://github.com/observabilitystack/demo">Demos</a></li>
-						<li><a href="https://github.com/observabilitystack/k8s-stack">Helm based K8s stack</a></li>
-						<li><a href="https://github.com/observabilitystack/k8s-stack/issues">Issues</a></li>
+						<li><a href="https://github.com/montdata/observability-demo">Demos</a></li>
+						<li><a href="https://github.com/montdata/montd-kube-observability">K8s Observability</a></li>
+						<li><a href="https://github.com/montdata/montd-observability/issues">Issues</a></li>
 				    </ul>
 			    </div><!--//footer-col-->
 
