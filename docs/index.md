@@ -7,7 +7,13 @@ has_children: true
 ---
 # montd.io documentation
 
-
+<!-- // Free Version ONLY -->
+				<ul class="social-list list-inline mb-0 position-absolute">
+					<li class="list-inline-item active"><a class="text-nav" href="/">Home</a></li>
+					<li class="list-inline-item"><a class="text-nav" href="/docs/">Docs</a></li>
+					<li class="list-inline-item social-start social"><a class="text-dark" href="https://github.com/montdata"><i class="fab fa-github fa-fw"></i></a></li>
+					<li class="list-inline-item social"><a class="text-dark" href="https://hub.docker.com/u/montdata"><i class="fab fa-docker fa-fw"></i></a></li>
+	            </ul><!--//social-list-->
 
 Montd.io project aims to be an open easy-to-use platform build with [Docker](https://docker.io) to Observability (metrics, monitoring, and alerting), cloud operations tools and dataops toolkit.
 
