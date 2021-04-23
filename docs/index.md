@@ -7,14 +7,6 @@ has_children: true
 ---
 # montd.io documentation
 
-<!-- // Free Version ONLY -->
-				<ul class="social-list list-inline mb-0 position-absolute">
-					<li class="list-inline-item active"><a class="text-nav" href="/">Home</a></li>
-					<li class="list-inline-item"><a class="text-nav" href="/docs/">Docs</a></li>
-					<li class="list-inline-item social-start social"><a class="text-dark" href="https://github.com/montdata"><i class="fab fa-github fa-fw"></i></a></li>
-					<li class="list-inline-item social"><a class="text-dark" href="https://hub.docker.com/u/montdata"><i class="fab fa-docker fa-fw"></i></a></li>
-	            </ul><!--//social-list-->
-
 Montd.io project aims to be an open easy-to-use platform build with [Docker](https://docker.io) to Observability (metrics, monitoring, and alerting), cloud operations tools and dataops toolkit.
 
 We provide container infrastructure for observability, with core and extended customizations using [Grafana](https://grafana.com/) to create and share custom analytical dashboards, [Prometheus](https://prometheus.io/) for metrics storage and [Alerta](https://alerta.io) for alerting dashboards. We strive to build a free and open source observability stacks, 
@@ -26,8 +18,8 @@ The Docker Compose YAML file(docker-compose.yml) defines all the configurations,
 Start [using it today](#usage).
 
 
-[Single / Demo Stack](https://github.com/montdata/montd-observability-demo){: .btn .btn-purple }
-[Quick start](docs/quickstart.html){: .btn }
+[Single / Demo Stack](https://github.com/montdata/montd-observability-demo){: .btn .btn-blue }
+[Quick start](building.html){: .btn .btn-blue }
 [GitHub Repos](https://github.com/montdata){: .btn }
 
 * * *
