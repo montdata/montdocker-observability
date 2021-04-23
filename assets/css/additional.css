@@ -1,0 +1,47 @@
+/* Nova */
+.hero-section .figure-holder {
+    background-image: url(../images/product-figure-1.png);
+    min-height: 520px;
+}
+
+.site-logo {
+    color: #47b0df;
+    margin-top: .3em;
+    margin-bottom: 0;
+}
+
+.logo-text {
+    vertical-align: text-top;
+}
+
+.header .social-list {
+    margin-right: 2em;
+    margin-top: 0.5em;
+}
+
+.header .social-list li {
+    margin-right: 1em;
+    color: #526b84;
+}
+
+.header .social-start {
+    margin-left: 2em;
+}
+
+.header .social-list li.social {
+    margin-right: 0.5em;
+}
+
+.header .social-list .active a {
+    color: #212B35;
+}
+
+.header .text-nav {
+    font-family: 'Maven Pro', sans-serif;
+    color: #526b84;
+    font-weight: 500;
+}
+
+.header a.text-nav:hover {
+    text-decoration: none;
+}

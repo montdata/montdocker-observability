@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>{{ site.title }}</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="author" content="{{ site.author }}">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700|Nunito:400,600,700" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/jquery-flipster/dist/jquery.flipster.min.css">
+    
+    <!-- Theme CSS -->  
+	<link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+	<link id="additional-style" rel="stylesheet" href="assets/css/additional.css">
+
+</head> 
+
+<body>
+	
+    <header class="header">
+	    
+        <div class="branding">
+            
+            <div class="container position-relative">
+
+				<nav class="navbar navbar-expand-lg" >
+                    <h1 class="site-logo">
+						<i class="fas fa-server"></i>
+						<span class="logo-text">observabilitystack.org</span>
+					</h1>
+				</nav>
+				
+				<!-- // Free Version ONLY -->
+				<ul class="social-list list-inline mb-0 position-absolute">
+					<li class="list-inline-item active"><a class="text-nav" href="/">Home</a></li>
+					<li class="list-inline-item"><a class="text-nav" href="/docs/">Documentation</a></li>
+					<li class="list-inline-item social-start social"><a class="text-dark" href="https://github.com/{{ site.github_org }}"><i class="fab fa-github fa-fw"></i></a></li>
+					<li class="list-inline-item social"><a class="text-dark" href="https://hub.docker.com/u/{{ site.github_org }}"><i class="fab fa-docker fa-fw"></i></a></li>
+	            </ul><!--//social-list-->
+            </div><!--//container-->
+            
+        </div><!--//branding-->
+        
+        
+    </header><!--//header-->
+    
+    
+    <section class="hero-section">
+	    <div class="container">
+		    <div class="row figure-holder">
+			    <div class="col-12 col-md-6 pt-3 pt-md-4">
+				    <h2 class="site-headline font-weight-bold mt-lg-5 pt-lg-5">
+						Log management for Kubernetes clusters.
+					</h2>
+				    <div class="site-tagline mb-3">
+						Providing the building bricks for
+						a state of the art log management
+						and observability stack.
+						Highly configurable and templated,
+						perfect to manage 
+						<em>smaller clusters, more of them.</em>
+					</div>
+					<div class="site-tagline font-weight-bold mb-3">
+						Free and open source.
+					</div>
+				    <div class="cta-btns">
+						<div class="mb-4"><a class="btn btn-primary font-weight-bold theme-btn" href="https://github.com/observabilitystack/demo">Take a look at the demos</a></div>
+				    </div>
+			    </div>
+		    </div><!--//row-->
+	    </div>
+    </section><!--//hero-section-->           
+    
+    <footer class="footer theme-bg-primary">
+	    <div class="container py-5 mb-3">
+		    <div class="row">
+			    <div class="footer-col col-6 col-lg-3">
+				    <h4 class="col-heading">Contributors</h4>
+				    <ul class="list-unstyled">
+						{% for c in site.github.contributors %}
+					    <li><a href="{{ c.html_url }}">{{ c.login }}</a></li>
+						{% endfor %}
+				    </ul>
+			    </div><!--//footer-col-->
+			    <div class="footer-col col-6 col-lg-3">
+				    <h4 class="col-heading">Resources</h4>
+				    <ul class="list-unstyled">
+						<li><a href="https://github.com/observabilitystack/demo">Demos</a></li>
+						<li><a href="https://github.com/observabilitystack/k8s-stack">Helm based K8s stack</a></li>
+						<li><a href="https://github.com/observabilitystack/k8s-stack/issues">Issues</a></li>
+				    </ul>
+			    </div><!--//footer-col-->
+
+		    </div><!--//row-->
+	    </div><!--//container-->
+	    
+	    <div class="footer-bottom text-center pb-5">
+	        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+                <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+	    </div>
+		
+    </footer>
+
+       
+    <!-- Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/popper.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    <!-- Page Specific JS -->
+    <script type="text/javascript" src="assets/plugins/jquery-flipster/dist/jquery.flipster.min.js"></script> 
+    <script type="text/javascript" src="assets/js/flipster-custom.js"></script> 
+
+
+</body>
+</html> 
+
