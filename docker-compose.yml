@@ -12,7 +12,7 @@ networks:
 services:
 
   prometheus:
-    image: prom/prometheus:v2.22.0
+    image: prom/prometheus:v2.26.0
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -32,7 +32,7 @@ services:
     restart: always
     
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.37.0
+    image: gcr.io/cadvisor/cadvisor:v0.39.0
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
@@ -43,24 +43,7 @@ services:
     networks:
       - back-tier
     restart: always
-
-  node-exporter:
-    image: prom/node-exporter:v1.0.1
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command: 
-      - '--path.procfs=/host/proc' 
-      - '--path.sysfs=/host/sys'
-      - --collector.filesystem.ignored-mount-points
-      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
-    ports:
-      - 42001:9100
-    networks:
-      - back-tier
-    restart: always
-
+  
   alertmanager:
     image: prom/alertmanager:v0.21.0
     ports:
@@ -75,7 +58,7 @@ services:
       - '--storage.path=/alertmanager'
 
   grafana:
-    image: grafana/grafana:7.2.2-ubuntu
+    image: grafana/grafana:7.5.5
     user: "472"
     depends_on:
       - prometheus
@@ -91,51 +74,6 @@ services:
       - front-tier
     restart: always
 
-#  alerta:
-#    image: alerta/alerta-web:8.0.2
-#    ports:
-#      - 42005:8080
-#    depends_on:
-#      - db
-#    environment:
-#      - AUTH_REQUIRED=${AUTH_REQUIRED:-False}
-#      - ADMIN_USERS=${ADMIN_USERS:-not-set}
-#      - CUSTOMER_VIEWS=${CUSTOMER_VIEWS:-False}
-#      - PROVIDER=${PROVIDER:-basic}
-#      - CLIENT_ID=${CLIENT_ID:-not-set}
-#      - CLIENT_SECRET=${CLIENT_SECRET:-not-set}
-#      - ALLOWED_EMAIL_DOMAIN=${ALLOWED_EMAIL_DOMAIN:-*}
-#      - ALLOWED_GITHUB_ORGS=${ALLOWED_GITHUB_ORGS:-*}
-#      - GITLAB_URL=${GITLAB_URL:-not-set}
-#      - ALLOWED_GITLAB_GROUPS=${ALLOWED_GITLAB_GROUPS:-*}
-#      - PLUGINS=${PLUGINS:-reject,prometheus}
-#      - ALERTMANAGER_API_URL=http://alertmanager:9093
-#      - ORIGIN_BLACKLIST=${ORIGIN_BLACKLIST:-not-set}
-#      - ALLOWED_ENVIRONMENTS=${ALLOWED_ENVIRONMENTS:-Production,Development}
-#      - MONGO_URI=mongodb://db:27017/monitoring
-#    restart: always
-#    networks:
-#      - back-tier
-#      - front-tier
-#
-#  db:
-#    image: mongo:4.0.20-xenial
-#    volumes:
-#      - ./data/mongodb:/data/db
-#    restart: always
-#    networks:
-#      - back-tier
-  graphite:
-    image: graphiteapp/graphite-statsd:1.1.7-6
-    ports:
-      - 42008:80
-      - 2003-2004
-      - 2023-2024
-      - 8125-8126
-    restart: always
-    networks:
-      - back-tier
-      - front-tier
   loki:
     image: grafana/loki:1.6.0
     ports:
