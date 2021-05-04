@@ -10,12 +10,14 @@ deleteDatasources:
 # list of datasources to insert/update depending
 # whats available in the database
 datasources:
-- name: Graphite
-  type: graphite
-  access: proxy
-  url: http://graphite:80
-  jsonData:
-    graphiteVersion: "1.6"
+- name: mysql 
+  type: mysql
+  url: mysqldb:3306
+  database: alertsnitch
+  user: alertsnitch
+  secureJsonData:
+      password: alertsnitch 
+  editable: true
   # <string, required> name of the datasource. Required
 - name: Prometheus
   # <string, required> datasource type. Required
