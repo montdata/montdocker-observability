@@ -21,6 +21,7 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--web.enable-lifecycle'
     ports:
       - 42004:9090
     depends_on:
@@ -30,9 +31,11 @@ services:
     networks:
       - back-tier
     restart: always
-    
+    labels:
+      org.label-schema.group: "observability"
+      
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:v0.39.0
+    image: gcr.io/cadvisor/cadvisor:v0.39.1
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
@@ -43,19 +46,23 @@ services:
     networks:
       - back-tier
     restart: always
-  
+    labels:
+      org.label-schema.group: "observability"
+      
   alertmanager:
-    image: prom/alertmanager:v0.21.0
+    image: prom/alertmanager:v0.22.2
     ports:
       - 42006:9093
     volumes:
       - ./alertmanager/:/etc/alertmanager/
     networks:
       - back-tier
-    restart: always
+    restart: unless-stopped
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
+    labels:
+      org.label-schema.group: "observability"
 
   grafana:
     image: grafana/grafana:7.5.5
@@ -73,15 +80,19 @@ services:
       - back-tier
       - front-tier
     restart: always
-
+    labels:
+      org.label-schema.group: "observability"
+      
   loki:
     image: grafana/loki:1.6.0
     ports:
       - "42002:3100"
     command: -config.file=/etc/loki/local-config.yaml
     networks:
-      - back-tier 
-
+      - back-tier
+    labels:
+      org.label-schema.group: "observability"
+      
   promtail:
     image: grafana/promtail:1.6.0
     volumes:
@@ -89,36 +100,5 @@ services:
     command: -config.file=/etc/promtail/config.yml
     networks:
       - back-tier
-  alertsnitch:
-    image: registry.gitlab.com/yakshaving.art/alertsnitch:latest
-    ports:
-    - "9567:9567"
-    networks:
-      - back-tier
-    environment:
-      ALERTSNITCH_DSN: "alertsnitch:alertsnitch@tcp(mysqldb)/alertsnitch"
-      ALERSTNITCH_BACKEND: "mysql"
-    depends_on:
-      mysqldb:
-        condition: service_healthy
-    restart: always
-
-  mysqldb:
-    restart: always
-    image: mysql:5.7
-    command: --default-authentication-plugin=mysql_native_password
-    volumes:
-      - ./db.d/mysql:/docker-entrypoint-initdb.d
-    ports:
-    - "3306:3306"
-    networks:
-      - back-tier
-    environment:
-      MYSQL_DATABASE: alertsnitch
-      MYSQL_USER: "alertsnitch"
-      MYSQL_PASSWORD: "alertsnitch"
-      MYSQL_ROOT_PASSWORD: "root"
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-proot"]
-      timeout: 20s
-      retries: 10
+    labels:
+      org.label-schema.group: "observability"
